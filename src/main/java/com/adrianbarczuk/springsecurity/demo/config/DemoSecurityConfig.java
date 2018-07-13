@@ -29,13 +29,17 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		
+		//modify login page
+		
 		http.authorizeRequests()
 				.anyRequest().authenticated()
 			.and()
 			.formLogin()
 				.loginPage("/login")
 				.loginProcessingUrl("/authenticateUser")
-				.permitAll();
+				.permitAll()
+			.and()
+			.logout().permitAll();
 		
 	}
 
